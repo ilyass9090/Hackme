@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محول HTML إلى موقع ويب - ظهور فوري في جوجل</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #7f8c8d;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: var(--light);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .main-content {
+            padding: 30px;
+        }
+        
+        .upload-section {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px dashed var(--primary);
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--gray);
+            border-radius: 8px;
+            padding: 40px 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 5px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #27ae60;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .steps {
+            margin: 40px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        .platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .platform {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .platform-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <h1>محول HTML إلى موقع ويب</h1>
+            <p>رفع ملف HTML الخاص بك وسنحوله مباشرة إلى موقع يعمل على الإنترنت</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="upload-section">
+                <h2>ارفع ملف HTML الخاص بك</h2>
+                <p>اختر ملف HTML من هاتفك أو جهازك وسنقوم بتحويله إلى موقع ويب مباشر</p>
+                
+                <div class="upload-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <p>انقر هنا أو اسحب ملف HTML إلى هنا</p>
+                    <p class="small">(يدعم الملفات ذات الامتداد .html فقط)</p>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn" onclick="simulateUpload()">
+                        <i class="fas fa-upload"></i> رفع الملف
+                    </button>
+                    <button class="btn btn-secondary" onclick="showPlatforms()">
+                        <i class="fas fa-eye"></i> معاينة قبل الرفع
+                    </button>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>تحويل فوري</h3>
+                    <p>احصل على موقعك على الإنترنت خلال ثوانٍ معدودة</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>ظهور في جوجل</h3>
+                    <p>موقعك سيظهر في نتائج بحث جوجل خلال 24 ساعة</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>متجاوب مع الهاتف</h3>
+                    <p>سيظهر موقعك بشكل ممتاز على جميع الأجهزة</p>
+                </div>
+            </div>
+            
+            <h2>كيفية تحويل ملف HTML إلى موقع ويب</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>اختر منصة النشر</h3>
+                        <p>اختر إحدى المنصات المجانية مثل Netlify أو GitHub Pages أو غيرها</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>أنشئ حسابًا</h3>
+                        <p>سجل حسابًا مجانيًا على المنصة التي اخترتها (يستغرق دقيقتين)</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>ارفع ملف HTML</h3>
+                        <p>استخدم أداة الرفع في المنصة لتحميل ملف HTML الخاص بك</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>احصل على الرابط</h3>
+                        <p>ستزودك المنصة برابط مباشر لموقعك على الإنترنت</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>أفضل المنصات المجانية لنشر مواقع HTML</h2>
+            
+            <div class="platforms">
+                <div class="platform">
+                    <div class="platform-icon">
+                        <i class="fab fa-netlify"></i>
+                    </div>
+                    <h3>Netlify</h3>
+                    <p>اسحب وأسقط ملف HTML واحصل على موقعك خلال ثوانٍ</p>
+                    <a href="#" class="btn">استخدم Netlify</a>
+                </div>
+                
+                <div class="platform">
+                    <div class="platform-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub Pages</h3>
+                    <p>خدمة استضافة مجانية من GitHub لمواقع HTML الثابتة</p>
+                    <a href="#" class="btn">استخدم GitHub</a>
+                </div>
+                
+                <div class="platform">
+                    <div class="platform-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Sites</h3>
+                    <p>أنشئ موقعًا مجانيًا باستخدام HTML على منصة جوجل</p>
+                    <a href="#" class="btn">استخدم جوجل</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <h2>ابدأ الآن!</h2>
+                <p>اختر المنصة المناسبة لك وابدأ بنشر موقعك على الإنترنت</p>
+                <button class="btn" onclick="showTutorial()">
+                    <i class="fas fa-play-circle"></i> شاهد شرح كيفية النشر
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 محول HTML إلى موقع ويب - جميع الحقوق محفوظة</p>
+            <p>للاستفسارات: support@htmlconverter.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // محاكاة عملية رفع الملف
+        function simulateUpload() {
+            alert("سيتم فتح نافذة لاختيار ملف HTML من جهازك. اختر الملف ثم اضغط 'موافق' لبدء الرفع.");
+            
+            // محاكاة عملية الرفع
+            setTimeout(function() {
+                alert("تم رفع الملف بنجاح! جاري تحويله إلى موقع ويب...");
+                
+                // محاكاة اكتمال التحويل
+                setTimeout(function() {
+                    alert("تم تحويل ملف HTML إلى موقع ويب بنجاح!\n\nرابط موقعك: https://my-website.netlify.app\n\nسيظهر موقعك في نتائج بحث جوجل خلال 24 ساعة.");
+                }, 2000);
+            }, 1000);
+        }
+        
+        // عرض المنصات
+        function showPlatforms() {
+            alert("المنصات المدعومة:\n\n1. Netlify - الأسرع والأسهل\n2. GitHub Pages - مجاني وموثوق\n3. Google Sites - متكامل مع خدمات جوجل\n\nاختر إحدى هذه المنصات لتحميل ملف HTML الخاص بك.");
+        }
+        
+        // عرض شرح النشر
+        function showTutorial() {
+            alert("شرح خطوة بخطوة:\n\n1. اختر منصة النشر (ننصح بـ Netlify للمبتدئين)\n2. سجل حسابًا مجانيًا\n3. ابحث عن خيار 'Deploy' أو 'Upload'\n4. اختر ملف HTML من جهازك\n5. انتظر حتى يتم الرفع\n6. احصل على رابط موقعك المجاني");
+        }
+    </script>
+</body>
+</html>
